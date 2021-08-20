@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.5/phpunit.xsd"
+    bootstrap="vendor/autoload.php"
+    cacheResultFile=".phpunit.cache/test-results"
+    executionOrder="depends,defects"
+    forceCoversAnnotation="true"
+    beStrictAboutCoversAnnotation="true"
+    beStrictAboutOutputDuringTests="true"
+    beStrictAboutTodoAnnotatedTests="true"
+    failOnRisky="true"
+    failOnWarning="true"
+    verbose="true"
+    colors="true"
+    testdox="true"
+    >
+
+    <testsuites>
+
+        <testsuite name="default">
+            <directory>test/TestBMICalculator.php</directory>
+        </testsuite>
+
+        <testsuite name="data-provider">
+            <directory>test/DataProviderTest.php</directory>
+        </testsuite>
+
+        <testsuite name="dependencies">
+            <directory>test/DependenciesTest.php</directory>
+        </testsuite>
+
+        <testsuite name="fixtures">
+            <directory>test/FixturesTest.php</directory>
+        </testsuite>
+
+        <testsuite name="private-property">
+            <directory>test/PrivatePropertyTest.php</directory>
+        </testsuite>
+
+        <testsuite name="abstract">
+            <directory>test/AbstractTest.php</directory>
+        </testsuite>
+
+        <testsuite name="risky-incomplete">
+            <directory>test/RiskyIncompleteTest.php</directory>
+        </testsuite>
+
+    </testsuites>
+
+    <coverage cacheDirectory=".phpunit.cache/code-coverage"
+              processUncoveredFiles="true">
+        <include>
+            <directory suffix=".php">src</directory>
+        </include>
+    </coverage>
+
+</phpunit>

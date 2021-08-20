@@ -1,0 +1,66 @@
+Documentation
+
+#INSTALLING COMPOSER AUTOLOAD & PHPUNIT
+
+first install composer autoload & then php unit 
+
+composer dump command: composer dump-autoload
+phpunit installing command: composer require --dev phpunit/phpunit ^9.5
+
+#PHPUNIT COMMAND WILL BE AVAILABLE FROM ROOT_DIRECTORY/VENDOR/BIN PHPUNIT
+
+NOTE: When running phpunit command i was having following issue:
+
+/usr/bin/php declares an invalid value for PHP_VERSION.
+This breaks fundamental functionality such as version_compare().
+Please use a different PHP interpreter.
+
+SOLUTION: 
+I had followed these commands for solution
+$ brew install php@7.4
+$ echo ‘export PATH=”/usr/local/opt/php@7.4/bin:$PATH”‘ >> ~/.bash_profile
+$ echo ‘export PATH=”/usr/local/opt/php@7.4/sbin:$PATH”‘ >> ~/.bash_profile
+
+REFERENCE: 
+https://askphpquestions.com/2021/07/02/phpunit-doesnt-work-because-php-interpreter-version/
+
+#Every test method should be prefixed by test
+
+Ex: testDivision 
+
+#TO SHOW COLOR ON THE OUTPUT TEXT NEED TO USE BELOW PARAM:
+
+Ex: phpunit test.php --color
+
+#TO GET MORE DETAILS ABOUT TEST CAN BE USED BELOW PARAM:
+
+--testdox OR -v
+
+#@covers ANNOTATIONS SHOULD BE USED BEFORE CLASS OR BEFORE METHOD OTHERWISE TEST WILL BE COUNTED AS RISKY
+
+Ex: 
+/**
+ *@covers ClassName
+*/
+class ClassName {}
+
+/**
+ *@covers methodName
+*/
+function methodName() {}
+
+#<testsuite></testsuite> TEST SUITE IS USED FOR NAMING EACH TEST SUITE AND USE WITH SUITE NAME INSTEAD OF USING FULL PATH
+
+Ex: 
+<testsuites>
+    <testsuite name="abc">
+        <directory>test/abc.php</directory>
+    </testsuite>
+    <testsuite name="xyz">
+        <directory>test/xyz.php</directory>
+    </testsuite>
+</testsuites>
+
+NAME ATTRIBUTE ON TESTSUITE IS REQUIRED
+
+Command Ex: phpunit --testsuite SUITE_NAME
